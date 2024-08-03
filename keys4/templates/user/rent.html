@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Rent "{{ book.title }}"</h1>
+    <form method="POST">
+        <select name="duration" required>
+            <option value="0.5">2 weeks</option>
+            <option value="1">1 month</option>
+            <option value="3">3 months</option>
+        </select>
+        <button type="submit">Rent</button>
+    </form>
+{% endblock %}

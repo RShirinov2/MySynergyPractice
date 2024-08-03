@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .trip-details {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .rating-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+</style>
+
+<div class="trip-details">
+    <h1>Trip by {{ trip.user.username }}</h1>
+    <p>{{ trip.description }}</p>
+    
+    <h3>Location</h3>
+    <p>Latitude: {{ trip.latitude }}, Longitude: {{ trip.longitude }}</p>
+    
+    <h3>Places to Visit</h3>
+    <p>{{ trip.places_to_visit }}</p>
+    
+    <h3>Ratings</h3>
+    <div class="rating-grid">
+        <p>Overall: {{ trip.overall_rating }}/5</p>
+        <p>Transportation: {{ trip.transportation_rating }}/5</p>
+        <p>Safety: {{ trip.safety_rating }}/5</p>
+        <p>Population: {{ trip.population_rating }}/5</p>
+        <p>Vegetation: {{ trip.vegetation_rating }}/5</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    form {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+    }
+</style>
+
+<h1>Login</h1>
+<form method="POST">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="submit" value="Login">
+</form>
+{% endblock %}

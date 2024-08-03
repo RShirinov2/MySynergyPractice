@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .trip-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .trip-card {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+    }
+</style>
+
+<h1>Travel Diary</h1>
+
+<div class="trip-list">
+    {% for trip in trips %}
+    <div class="trip-card">
+        <h3>Trip by {{ trip.user.username }}</h3>
+        <p>{{ trip.description[:100] }}...</p>
+        <p>Overall Rating: {{ trip.overall_rating }}/5</p>
+        <a href="{{ url_for('view_trip', trip_id=trip.id) }}">View Details</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

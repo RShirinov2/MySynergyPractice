@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Books</h1>
+    <p>Your balance: ${{ current_user.balance }}</p>
+    <form>
+        <select name="sort" onchange="this.form.submit()">
+            <option value="">Sort by</option>
+            <option value="category" {% if current_sort == 'category' %}selected{% endif %}>Category</option>
+            <option value="author" {% if current_sort == 'author' %}selected{% endif %}>Author</option>
+            <option value="year" {% if current_sort == 'year' %}selected{% endif %}>Year</option>
+        </select>
+    </form>
+    <ul>
+    {% for book in books %}
+        <li>
+            {{ book.title }} by {{ book.author }} ({{ book.year }}) - {{ book.category }}
+            <br>
+            Purchase: ${{ book.purchase_price }} | Rent: ${{ book.rent_price }}
+            <br>
+            Available: {{ book.available_quantity }}
+            <br>
+            <a href="{{ url_for('buy_book', book_id=book.id) }}">Buy</a>
+            <a href="{{ url_for('rent_book', book_id=book.id) }}">Rent</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Manage Books</h1>
+    <ul>
+    {% for book in books %}
+        <li>
+            {{ book.title }} by {{ book.author }} ({{ book.year }}) - {{ book.category }}
+            <br>
+            Purchase: ${{ book.purchase_price }} | Rent: ${{ book.rent_price }}
+            <br>
+            Available: {{ book.available_quantity }}
+            <br>
+            <a href="{{ url_for('edit_book', book_id=book.id) }}">Edit</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

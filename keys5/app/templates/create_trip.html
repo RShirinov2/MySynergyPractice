@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    form {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+    }
+    .rating {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+
+<h1>Create Trip</h1>
+<form method="POST">
+    <textarea name="description" placeholder="Trip description" required></textarea>
+    <input type="number" step="0.000001" name="latitude" placeholder="Latitude" required>
+    <input type="number" step="0.000001" name="longitude" placeholder="Longitude" required>
+    <textarea name="places_to_visit" placeholder="Places to visit (comma-separated)"></textarea>
+    
+    <div class="rating">
+        <label>Overall: <input type="number" name="overall_rating" min="1" max="5" required></label>
+        <label>Transportation: <input type="number" name="transportation_rating" min="1" max="5" required></label>
+        <label>Safety: <input type="number" name="safety_rating" min="1" max="5" required></label>
+        <label>Population: <input type="number" name="population_rating" min="1" max="5" required></label>
+        <label>Vegetation: <input type="number" name="vegetation_rating" min="1" max="5" required></label>
+    </div>
+
+    <input type="submit" value="Create Trip">
+</form>
+{% endblock %}
